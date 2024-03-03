@@ -45,6 +45,7 @@ function App() {
     const newDeletedItem = todoData.filter((item) => item.task !== itemName);
     setTodoData(newDeletedItem);
   };
+
   return (
     <>
       <center>

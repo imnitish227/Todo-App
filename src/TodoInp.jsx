@@ -1,5 +1,6 @@
 import { useState } from "react";
 import style from "./TodoTask.module.css";
+import { IoAddCircle } from "react-icons/io5";
 
 function TodoInp({ handleAdd }) {
   const [todoName, setTodoName] = useState("");
@@ -19,7 +20,7 @@ function TodoInp({ handleAdd }) {
   return (
     <>
       <div className={`${style.TodoTaskRow} row`}>
-        <div class="col-lg-6 col-sm-6 col-xs-6">
+        <div className="col-lg-6 col-sm-6 col-xs-6">
           <input
             type="text"
             placeholder="Enter your task"
@@ -27,7 +28,7 @@ function TodoInp({ handleAdd }) {
             onChange={handleTodoName}
           ></input>
         </div>
-        <div class="col-lg-4 col-sm-4 col-xs-4">
+        <div className="col-lg-4 col-sm-4 col-xs-4">
           <input
             type="date"
             placeholder="Enter Date"
@@ -35,14 +36,14 @@ function TodoInp({ handleAdd }) {
             onChange={handleTodoDate}
           ></input>
         </div>
-        <div class="col-lg-2 col-sm-2 col-xs-2">
+        <div className="col-lg-2 col-sm-2 col-xs-2">
           <button
             type="button"
-            class="btn btn-primary"
+            className="btn btn-primary"
             style={{ width: "82px" }}
             onClick={onNewItemAdd}
           >
-            Add
+            <IoAddCircle />
           </button>
         </div>
       </div>
