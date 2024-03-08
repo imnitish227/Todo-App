@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+
+import { TodoItmesContext } from "./store/items";
 import style from "./TodoTask.module.css";
 import { IoAddCircle } from "react-icons/io5";
 
-function TodoInp({ handleAdd }) {
+function TodoInp() {
+  const { addNewItem } = useContext(TodoItmesContext);
   const [todoName, setTodoName] = useState("");
   const [todoDate, setTodoDate] = useState("");
 
@@ -13,7 +16,7 @@ function TodoInp({ handleAdd }) {
     setTodoDate(event.target.value);
   };
   function onNewItemAdd() {
-    handleAdd(todoName, todoDate);
+    addNewItem(todoName, todoDate);
     setTodoName("");
     setTodoDate("");
   }

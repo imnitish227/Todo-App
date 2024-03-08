@@ -1,35 +1,19 @@
 import "./App.css";
 import Head from "./Head";
 import TodoInp from "./TodoInp";
+import { TodoItmesContext } from "./store/items";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import TodoItem from "./TodoItem";
 import { useState } from "react";
 import Welcome from "./Welcome";
-function App() {
-  let mydata = [
-    {
-      task: "react",
-      date: "10-01-2024",
-    },
-    {
-      task: "node",
-      date: "11-01-2024",
-    },
-    {
-      task: "express",
-      date: "12-01-2024",
-    },
-    {
-      task: "mongo",
-      date: "13-01-2024",
-    },
-  ];
 
-  const [todoData, setTodoData] = useState(mydata);
+//app component
+function App() {
+  const [todoData, setTodoData] = useState([]);
   const [emptyError, setEmptyError] = useState("");
 
-  function handleAdd(todoName, todoDate) {
+  function addNewItem(todoName, todoDate) {
     if (todoName === "") {
       setEmptyError("Please eneter task and date");
     } else if (todoDate === "") {
@@ -47,16 +31,16 @@ function App() {
   };
 
   return (
-    <>
+    <TodoItmesContext.Provider value={{ todoData, addNewItem, onDeleteItem }}>
       <center>
         <Head />
-        <TodoInp handleAdd={handleAdd} />
+        <TodoInp />
         <p style={{ color: "red" }}>{emptyError}</p>
-        {todoData.length == 0 && <Welcome />}
+        <Welcome />
 
-        <TodoItem item={todoData} onDeleteItem={onDeleteItem} />
+        <TodoItem />
       </center>
-    </>
+    </TodoItmesContext.Provider>
   );
 }
 

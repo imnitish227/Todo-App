@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import style from "./TodoTask.module.css";
+import { TodoItmesContext } from "./store/items";
 import { MdDelete } from "react-icons/md";
-function TodoTask({ task, date, onDeleteItem }) {
+function TodoTask({ task, date }) {
+  const { onDeleteItem } = useContext(TodoItmesContext);
   return (
     <>
       <div
